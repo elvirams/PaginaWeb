@@ -4,11 +4,11 @@
 
     class ProductosDAO {
 
-        # Conexión a la base de datos.
+        # Conexión a la base de datos.       
         public $db_con;
         public function __construct(){
-            $this->db_con = Database::connect();
-        }
+        $this->db_con = Database::connect();
+    }
 
         # Método en el que se obtiene toda la información sobre los productos
         public function getAllProducts(){
