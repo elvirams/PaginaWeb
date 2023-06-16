@@ -12,7 +12,7 @@
 
         # Método en el que se obtiene toda la información sobre los productos
         public function getAllProducts(){
-            $stmt=$this->db_con->prepare(("select *from Productos"));
+            $stmt=$this->db_con->prepare(("select *from productos"));
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $stmt->execute();
             # Devuelve todos los productos.
@@ -21,7 +21,7 @@
         
         # Método que devuelve toda la información de un producto dado su id.
         public function getProductById ($id_producto){
-            $stmt= $this->db_con->prepare("Select * from Productos where id_producto=$id_producto");
+            $stmt= $this->db_con->prepare("Select * from productos where id_producto=$id_producto");
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $stmt->execute();
             # Devuelve todos los productos.
@@ -30,7 +30,7 @@
 
         # Método para insertar un nuevo producto en la base de datos.
         public function insertproduct($nombre, $precio, $descripcion, $fechalanzamiento, $pantalla, $procesador, $ram, $almacenamiento, $camara, $imagen){
-            $stmt= $this->db_con->prepare("INSERT INTO Productos (Nombre,Precio,Descripcion,FechaLanzamiento,Pantalla,Procesador,Ram,Almacenamiento,Camara,Imagen) VALUES (:Nombre,:Precio,:Descripcion,:FechaLanzamiento,:Pantalla,:Procesador,:Ram,:Almacenamiento,:Camara,:Imagen)");
+            $stmt= $this->db_con->prepare("INSERT INTO productos (Nombre,Precio,Descripcion,FechaLanzamiento,Pantalla,Procesador,Ram,Almacenamiento,Camara,Imagen) VALUES (:Nombre,:Precio,:Descripcion,:FechaLanzamiento,:Pantalla,:Procesador,:Ram,:Almacenamiento,:Camara,:Imagen)");
             $stmt->bindParam(':Nombre', $nombre);
             $stmt->bindParam(':Precio', $precio);
             $stmt->bindParam(':Descripcion', $descripcion);
@@ -50,7 +50,7 @@
         
         # Método para eliminar un producto por su id.
         public function deleteprod ($id_producto) {
-            $stmt= $this->db_con->prepare("Delete from Productos where id_producto=$id_producto");
+            $stmt= $this->db_con->prepare("Delete from productos where id_producto=$id_producto");
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $stmt->execute();
             return $stmt->fetch();  # Devuelve un solo producto
