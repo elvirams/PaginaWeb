@@ -1,5 +1,5 @@
 <?php
-    require_once 'db/conexiondb.php';
+    include 'db/conexiondb.php';
 
 
     class ProductosDAO {
